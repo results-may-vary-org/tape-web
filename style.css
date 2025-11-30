@@ -255,7 +255,7 @@ button:active {
 
 footer {
   height: 30vw;
-  margin-top: -10vw;
+  /*margin-top: -10vw;*/
 }
 
 footer > div {

@@ -16,13 +16,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   const elems = document.getElementsByClassName('anime');
   
-  console.log(elems)
-
   Object.values(elems).forEach(element => {
     splitText(element, {lines: { wrap: 'clip' }})
     .addEffect(({ lines }) => animate(lines, {
       y: [{ to: ['100%', '0%'] }],
-      duration: 750,
+      duration: 1000,
       ease: 'out(3)',
       delay: stagger(200),
       loop: false,
