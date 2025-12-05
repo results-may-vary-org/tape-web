@@ -273,8 +273,8 @@ a:hover {
 }
 
 .footer {
-  height: 25rem;
-  width: 100vw;
+  /* height: 25rem; */
+  margin: 8rem 0;
 }
 
 .btn {
