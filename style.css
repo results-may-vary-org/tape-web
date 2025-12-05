@@ -67,7 +67,9 @@ h1, h2, h3, h4, h5, h6 {
 :root {
   --primary: #292524;
   --secondary: #fff0df;
-  --ternary: #c7b35a; 
+  --secondary-light : #fff0df54;
+  --ternary: #c7b35a;
+  --ternary-light: #c7b35a54;
 }
 
 body {
@@ -251,7 +253,7 @@ a:hover {
   flex-direction: row;
 }
 
-.items > div.span-2 > .btn:first-child {
+.items > div.span-2 > a:first-child {
   margin: 0 2rem 0 0;
 }
 
@@ -286,7 +288,7 @@ a:hover {
   border: none;
   cursor: pointer;
   text-align: center;
-  box-shadow: 10px 10px black;
+  box-shadow: 10px 10px var(--ternary-light);
   border-radius: 0px;
 }
 
