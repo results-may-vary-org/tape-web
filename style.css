@@ -1,52 +1,70 @@
-/* reset */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+@font-face {
+  font-family: j12;
+  src: url(Jacquard_12/Jacquard12-Regular.ttf);
 }
 
-/* Font */
+@font-face {
+  font-family: vt323;
+  src: url(VT323/VT323-Regular.ttf);
+}
+
+/* css reset  */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+10. Create a root stacking context
+*/
+#root, #__next { isolation: isolate; }
+
+/* font and special style */
 :root {
-  /*--primary: #fff0df;
-  --secondary: #292524; */
   --primary: #292524;
   --secondary: #fff0df;
   --ternary: #c7b35a; 
@@ -83,13 +101,13 @@ h5 {
   font-size: clamp(1.5rem, 2vw + 0.5rem, 1.999rem);
 }
 
-h6 {
+h6, p {
   font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.414rem);
 }
 
-p {
-  font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
-}
+/* p { */
+/*   font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem); */
+/* } */
 
 small {
   font-size: clamp(0.625rem, 0.8vw + 0.3rem, 0.707rem);
@@ -107,164 +125,190 @@ small {
   color: var(--ternary);
 }
 
-/* other */
-.sub-title {
-  margin: 60px 0 0; 
-}
-
-.sub-title > p {
-  margin-bottom: 1rem;
-}
-
 a {
+  text-decoration: underline;
+  color: var(--ternary);
+}
+
+a:hover {
   text-decoration: none;
-  color: inherit;
 }
 
 .blurred {
   box-shadow: 0 4px 30px rgba(255, 240, 223, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
-header {
-  height: 60px;
-  width: calc(100vw - 15px * 2);
+.j12 {
+  font-family: "j12", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.vt323 {
+  font-family: "vt323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* tape style */
+.hero {
+  /* reminder: height must not be set here to fit the svg element */
+  width: 100vw;
+  padding: 2rem;
+}
+
+#svgGroup {
+  fill: var(--secondary);
+  stroke: var(--secondary);
+}
+
+.container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: fixed;
-  z-index: 3;
-  padding: 15px;
-}
-
-header > .link {
-  text-decoration: underline;
-}
-
-section {
-  padding-top: 120px;
-  width: 75%;
-  margin: 0 auto;
-}
-
-@media only screen and (width >= 1400px) {
-  section {
-    width: 55%;
-  }
-}
-
-.button-group {
-  padding: 60px 0;
-}
-
-.screenshot {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.screenshot > img {
-  width: 100%;
-  border-radius: 25px;
-}
-
-.features {
-  margin-top: 120px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.features > div {
-  display: flex;
+  width: 100vw;
   flex-direction: column;
-  align-items: center;
+  flex-wrap: nowrap;
 }
 
-@media only screen and (width > 600px) {
- .features > div {
-    width: calc(100%/3);
-  } 
-}
-
-@media only screen and (width <= 600px) and (width > 400px) {
- .features > div {
-    width: calc(100%/2);
-  } 
-}
-
-@media only screen and (width <= 400px) {
- .features > div {
-    width: calc(100%);
-  } 
-}
-
-.features > div > svg {
-  height: 60px;
-}
-
-.features > div > h6 {
-  width: 100%;
-  height: 9rem;
-  text-align: center;
-  padding-top: 1rem;
-}
-
-footer {
-  padding: 60px 0;
-}
-
-.cta-footer {
-  width: 100%;
+.quote {
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
 
-button {
-  text-decoration: none;
-  color: var(--ternary);
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  background-color: var(--primary);
-  margin-right: 20px;
+.quote > h2 {
+  text-align: center;
+  width: 95vmin;
+  margin-top: 1rem;
+  border-style: solid;
+  border-color: (--secondary);
+  border-width: 1px 1px 0;
 }
 
-button:hover {
-  box-shadow: 0px 0px 0px 0px, 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px;
+.picture {
+  width: 95vmin;
+  border-style: solid;
+  border-color: (--secondary);
+  border-width: 1px;
 }
 
-button:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
+.feature {
+  width: 95vmin;
 }
 
-@media (min-width: 768px) {
-  button {
-    padding: 0.25em 0.75em;
+.sub {
+  border-style: solid;
+  border-color: (--secondary);
+  border-width: 0 1px 1px;
+  padding: 0.5rem;
+}
+
+.sub > h3 {
+  line-height: 1;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.items > div > svg {
+  height: 2rem;
+}
+
+.items > div {
+  border-left: 1px solid var(--secondary);
+  border-bottom: 1px solid var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "vt323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  padding: 2rem;
+  min-height: 10rem;
+}
+
+/* even child ignoring the first */
+/* the first child is the button row */
+.items > div:nth-child(2n+1):not(:first-child) {
+  border-right: 1px solid var(--secondary);
+}
+
+.items > div:nth-child(2), .items > div:nth-child(3) {
+  border-top: 1px solid var(--secondary);
+}
+
+/* the button */
+.items > div.span-2 {
+  grid-column: span 2;
+  border: none;
+  height: calc(10rem*1.5);
+  display: flex;
+  flex-direction: row;
+}
+
+.items > div.span-2 > .btn:first-child {
+  margin: 0 2rem 0 0;
+}
+
+@media (max-width: 768px) {
+  .items {
+    grid-template-columns: 1fr;
+  }
+  .items > div {
+    border-right: 1px solid var(--secondary);
+  }
+  .items > div.span-2 {
+    grid-column: span 1;
+  }
+  .items > div:nth-child(3) {
+    border-top: none;
   }
 }
 
-footer {
-  height: 30vw;
-  /*margin-top: -10vw;*/
+.footer {
+  height: 25rem;
+  width: 100vw;
 }
 
-footer > div {
-  height: 30vw;
-  font-size: 40vw;
-  background: linear-gradient(180deg,rgba(199, 179, 90, 1) 0%, rgba(199, 179, 90, 0.19) 53%, rgba(255, 255, 255, 0) 100%);
-  background-clip: text;
-  color: transparent;
-  font-weight: 900;
-  width: 100%;
+.btn {
+  height: 3rem;
+  width: 8rem;
+  display: inline-block;
+  outline:0;
+  padding: 1px 10px;
+  background-color: var(--secondary);
+  color: black;
+  border: none;
+  cursor: pointer;
   text-align: center;
+  box-shadow: 10px 10px black;
+  border-radius: 0px;
 }
+
+.btn.disabled {
+  text-decoration: line-through;
+}
+
+.btn:active {
+  background-color: var(--ternary) !important;
+  color: black !important;
+  box-shadow: none !important;
+}
+
+.btn:focus {
+  background-color: var(--ternary) !important;
+}
+
+
+
+
+
+
+
+
+
