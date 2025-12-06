@@ -171,7 +171,7 @@ a:hover {
 }
 
 #svgGroup {
-  fill: var(--primary);
+  fill: transparent;
   stroke: var(--primary);
 }
 
@@ -199,6 +199,7 @@ a:hover {
 }
 
 .picture {
+  opacity: 0;
   width: 95vmin;
 }
 
